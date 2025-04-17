@@ -6,9 +6,31 @@ class LoginPage extends StatelessWidget {
   final TextEditingController passwordController = TextEditingController();
 
   Future<void> login(BuildContext context) async {
+
+    final List<Map<String, String>> users = [
+      {
+        "username": "nofan",
+        "password": "123220023",
+      },
+      {
+        "username": "farid",
+        "password": "123220094",
+      },
+      {
+        "username": "fikri",
+        "password": "123220075",
+      }
+
+    ];
+
+
     final username = usernameController.text;
     final password = passwordController.text;
-    if (username == "admin" && password == "admin123") {
+
+    bool isValidUSers = users.any((user) => user["username"] == username && user["password"] == password);
+
+
+    if (isValidUSers) {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setBool('isLoggedIn', true);
       await prefs.setString('username', username);

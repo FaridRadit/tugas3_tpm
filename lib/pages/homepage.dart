@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tugas3/pages/login_page.dart';
+import 'package:tugas3/pages/stopwatch.dart';
+import 'package:tugas3/pages/stopwatch.dart';
 class HomePage extends StatelessWidget {
   Future<void> logout(BuildContext context) async {
     final prefs = await SharedPreferences.getInstance();
@@ -34,6 +36,13 @@ class HomePage extends StatelessWidget {
                   onPressed: () => logout(context),
                   child: const Text("Logout"),
                 ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                child: Text("Stopwatch"),
+                  onPressed: () => Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (_) => StopwatchApp()),
+             )),
               ],
             );
           },
